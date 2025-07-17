@@ -1,3 +1,4 @@
+
 from random import randint
 import streamlit as st
 from PIL import Image
@@ -62,7 +63,9 @@ if not st.session_state['is_verified']:
     if st.button("Verify OTP"):
         if entered_otp == st.session_state.get('mock_otp'):
             st.session_state['is_verified'] = True
-            st.experimental_rerun()
+            st.success("OTP Verified! Reloading...")
+            time.sleep(1)
+            st.stop()
         else:
             st.error("Incorrect OTP. Please try again.")
 
